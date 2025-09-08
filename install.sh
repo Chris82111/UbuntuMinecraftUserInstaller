@@ -36,6 +36,7 @@ appDownloadInfoUrl="https://www.minecraft.net/en-us/download"
 appDownloadUrl="https://launcher.mojang.com/download/Minecraft.tar.gz"
 
 appDirectory="${applicationDir}/minecraft"
+appUninstall="${appDirectory}/uninstall.sh"
 appExecutable="${appDirectory}/minecraft-launcher"
 appIcon="${iconsScalableDir}/minecraft_icon.svg"
 appResourceDirectoryDesktop="./Resources"
@@ -183,26 +184,41 @@ if [ "i" == "${answer}" ] ; then
     Helpers_Log "${message}"
     update-desktop-database "${startMenuDir%/}"
 
+    Helpers_Log "Create uninstall script"
+    echo "#!/bin/bash" > "${appUninstall}"
+    echo "rm \"${desktopDir}/${appDesktopIconName}\"" >> "${appUninstall}"
+    echo "rm \"${startMenuDir}/${appDesktopIconName}\"" >> "${appUninstall}"
+    echo "rm \"${publicExecutableDir}/$(basename "${appExecutable}")\"" >> "${appUninstall}"
+    echo "rm \"${appIcon}\"" >> "${appUninstall}"
+    echo "rm -fr \"${appDirectory}\"" >> "${appUninstall}"
+    echo "echo -e \"[${fail}info${normal}] The user data are not removed, clean it yourself: '${HOME}/.minecraft'\"" >> "${appUninstall}"
+    echo "echo -e \"[${pass}pass${normal}] Rest of uninstallation is complete\"" >> "${appUninstall}"
+    chmod 711 "${appUninstall}"
+
     echo -e "[${pass}pass${normal}] Installation is complete"
 
 elif [ "u" == "${answer}" ] ; then
 
     Helpers_Log "Desktop icon"
     message="$(rm "${desktopDir}/${appDesktopIconName}" 2>&1)"
-    [ "" != "${message}" ] && HHelpers_Log "${message}"
+    [ "" != "${message}" ] && Helpers_Log "${message}"
     
     Helpers_Log "Application desktop icon"
     message="$(rm "${startMenuDir}/${appDesktopIconName}" 2>&1)"
-    [ "" != "${message}" ] && HHelpers_Log "${message}"
+    [ "" != "${message}" ] && Helpers_Log "${message}"
     
     Helpers_Log "Application start menu icon"
     message="$(rm "${publicExecutableDir}/$(basename "${appExecutable}")" 2>&1)"
-    [ "" != "${message}" ] && HHelpers_Log "${message}"
+    [ "" != "${message}" ] && Helpers_Log "${message}"
     
     Helpers_Log "Application pictures"
     message="$(rm "${appIcon}" 2>&1)"
-    [ "" != "${message}" ] && HHelpers_Log "${message}"
+    [ "" != "${message}" ] && Helpers_Log "${message}"
     
+    Helpers_Log "Application uninstall file"
+    message="$(rm "${appUninstall}" 2>&1)"
+    [ "" != "${message}" ] && Helpers_Log "${message}"
+
     Helpers_Log "Application"
     rm -fr "${appDirectory}"
     
