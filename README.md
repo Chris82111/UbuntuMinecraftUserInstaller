@@ -22,8 +22,10 @@ eliminating the need for inputs during installation.
 
 In the "Show Apps" menu, you can right-click to perform the following actions:
 
-- $\textsf{\color{lightblue}Open Save Folder}$ The action opens the default folder for your game saves.
-- $\textsf{\color{lightblue}Uninstall}$ The action starts the uninstallation process.
+- **Open Save Folder** \
+  The action opens the default folder for your game saves.
+- **Uninstall** \
+  The action starts the uninstallation process.
 
 ## Install Script
 
@@ -33,15 +35,15 @@ The install script can be used for installation and uninstallation:
 install.sh [-v|--verbose] [--install | --uninstall] [--archive <path>] [--image <index>] [-h|--help] [--version]
 ```
 
-| Parameter                         | Description                                      |
-| :-------------------------------- | :----------------------------------------------- |
-| -v, <nobr>--verbose       </nobr> | Enable verbose output                            |
-| -h, <nobr>--help          </nobr> | Show this help message and exit                  |
-|     <nobr>--install       </nobr> | Install the application                          |
-|     <nobr>--uninstall     </nobr> | Uninstall the application                        |
-|     <nobr>--archive       </path> | Specify the archive file path. If an archive is downloaded manually and specified here, this file is used and a later download is skipped |
-|     <nobr>--image <index> </nobr> | Select an image index, from 0 to 10              |
-|     <nobr>--version       </nobr> | Show the application version (from git) and exit |
+| Parameter             | Description                                      |
+| :-------------------- | :----------------------------------------------- |
+| -v, --verbose         | Enable verbose output                            |
+| -h, --help            | Show this help message and exit                  |
+|     --install         | Install the application                          |
+|     --uninstall       | Uninstall the application                        |
+|     --archive </path> | Specify the archive file path. If an archive is downloaded manually and specified here, this file is used and a later download is skipped |
+|     --image <index>   | Select an image index, from 0 to 10              |
+|     --version         | Show the application version (from git) and exit |
 
 ### Desktop Icons
 
@@ -60,7 +62,7 @@ The desktop icon can be one of the following icons:
 </picture><picture>
   <img
     alt=""
-    src="./Resources/Icons/minecraft_2013-2023_1.6-1.19svg"
+    src="./Resources/Icons/minecraft_2013-2023_1.6-1.19.svg"
     width="30" />
 </picture><picture>
   <img
