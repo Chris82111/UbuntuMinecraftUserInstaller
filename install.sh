@@ -40,7 +40,7 @@ appUninstall="${appDirectory}/uninstall.sh"
 appExecutable="${appDirectory}/minecraft-launcher"
 appIcon="${iconsScalableDir}/minecraft_icon.svg"
 appResourceDirectoryDesktop="./Resources"
-appDesktopIconName="minecraft.desktop"
+appDesktopIconName="minecraft-launcher.desktop"
 appResourceDirectoryIcon="./Resources/Icons"
 icons=( \
     "minecraft_2009-2013.svg" \
