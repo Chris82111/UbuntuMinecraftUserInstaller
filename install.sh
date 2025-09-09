@@ -68,7 +68,7 @@ _archive=""
 while [[ ! -z "$1" ]] ; do
   case "${1,,}" in
     -v|--verbose) VERBOSE=true ;;
-    --help) _help="true" ;;
+    -h|--help) _help="true" ;;
     --image) shift ; _image="$1" ;;
     --install) _install="i" ;;
     --uninstall) _install="u" ;;
@@ -91,9 +91,9 @@ if [ "true" = "${_help}" ] ; then
     echo "             [--image <index>] [--help] [--version]"
     echo ""
     echo "Description:"
-    echo "  This script can be used to install and uninstall Minecraft on a Debian-based"
-    echo "  system, such as Ubuntu. The standard executable file from Microsoft is used to"
-    echo "  start the program. The script takes care of creating the necessary shortcuts."
+    echo "  This script can be used to install and uninstall Minecraft on a Ubuntu."
+    echo "  The standard executable file from Microsoft is used to start the program."
+    echo "  The script takes care of creating the necessary shortcuts."
     echo "  The installer can be run as a normal user; 'sudo' is not necessary for"
     echo "  execution and is also not permitted. Without parameters, the script is"
     echo "  executed in interactive mode. Parameters can be entered for automation,"
@@ -102,7 +102,7 @@ if [ "true" = "${_help}" ] ; then
     echo ""
     echo "Options:"
     echo "  -v, --verbose     Enable verbose output"
-    echo "  --help            Show this help message and exit"
+    echo "  -h, --help        Show this help message and exit"
     echo "  --install         Install the application"
     echo "  --uninstall       Uninstall the application"
     echo "  --archive <path>  Specify the archive file path. If an archive is downloaded"
