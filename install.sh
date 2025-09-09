@@ -185,14 +185,30 @@ if [ "i" == "${answer}" ] ; then
     update-desktop-database "${startMenuDir%/}"
 
     Helpers_Log "Create uninstall script"
-    echo "#!/bin/bash" > "${appUninstall}"
-    echo "rm \"${desktopDir}/${appDesktopIconName}\"" >> "${appUninstall}"
-    echo "rm \"${startMenuDir}/${appDesktopIconName}\"" >> "${appUninstall}"
-    echo "rm \"${publicExecutableDir}/$(basename "${appExecutable}")\"" >> "${appUninstall}"
-    echo "rm \"${appIcon}\"" >> "${appUninstall}"
-    echo "rm -fr \"${appDirectory}\"" >> "${appUninstall}"
-    echo "echo -e \"[${fail}info${normal}] The user data are not removed, clean it yourself: '${HOME}/.minecraft'\"" >> "${appUninstall}"
-    echo "echo -e \"[${pass}pass${normal}] Rest of uninstallation is complete\"" >> "${appUninstall}"
+cat <<EOF > "${appUninstall}"
+#!/bin/bash
+uninstall="n"
+if [ "--uninstall" = "\$1" ] ; then
+    uninstall="y"
+else
+    echo -n "Do you really want to uninstall the application y/n? "
+    read -r answer
+    if [ "y" = "\${answer,,}" ] ; then
+        uninstall="y"
+    fi
+fi
+
+if [ "y" = "\${uninstall}" ] ; then
+    rm "${desktopDir}/${appDesktopIconName}"
+    rm "${startMenuDir}/${appDesktopIconName}"
+    rm "${publicExecutableDir}/$(basename "${appExecutable}")"
+    rm "${appIcon}"
+    rm -fr "${appDirectory}"
+    echo -e "[${fail}info${normal}] The user data are not removed, clean it yourself: '\${HOME}/.minecraft'"
+    echo -e "[${pass}pass${normal}] Rest of uninstallation is complete"
+fi
+
+EOF
     chmod 711 "${appUninstall}"
 
     echo -e "[${pass}pass${normal}] Installation is complete"

@@ -6,3 +6,14 @@ Icon=minecraft_icon
 Terminal=false
 Type=Application
 Categories=Game;
+SingleMainWindow=true
+X-GNOME-SingleWindow=true
+Actions=OpenSaveFolder;Uninstall;
+
+[Desktop Action OpenSaveFolder]
+Name=Open Save Folder
+Exec=sh -c 'xdg-open "$HOME/.minecraft/saves"'
+
+[Desktop Action Uninstall]
+Name=Uninstall
+Exec=x-terminal-emulator -e "$HOME/.local/share/minecraft/uninstall.sh"
