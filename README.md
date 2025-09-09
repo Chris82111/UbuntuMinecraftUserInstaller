@@ -35,15 +35,15 @@ The install script can be used for installation and uninstallation:
 install.sh [-v|--verbose] [--install | --uninstall] [--archive <path>] [--image <index>] [-h|--help] [--version]
 ```
 
-| Parameter             | Description                                      |
-| :-------------------- | :----------------------------------------------- |
-| -v, --verbose         | Enable verbose output                            |
-| -h, --help            | Show this help message and exit                  |
-|     --install         | Install the application                          |
-|     --uninstall       | Uninstall the application                        |
-|     --archive </path> | Specify the archive file path. If an archive is downloaded manually and specified here, this file is used and a later download is skipped |
-|     --image <index>   | Select an image index, from 0 to 10              |
-|     --version         | Show the application version (from git) and exit |
+| Parameter              | Description                                      |
+| :--------------------- | :----------------------------------------------- |
+| -v, --verbose          | Enable verbose output                            |
+| -h, --help             | Show this help message and exit                  |
+|     --install          | Install the application                          |
+|     --uninstall        | Uninstall the application                        |
+|     --archive \<path\> | Specify the archive file path. If an archive is downloaded manually and specified here, this file is used and a later download is skipped |
+|     --image \<index\>  | Select an image index, from 0 to 10              |
+|     --version          | Show the application version (from git) and exit |
 
 ### Desktop Icons
 
@@ -105,6 +105,11 @@ The desktop icon can be one of the following icons:
     src="./Resources/Icons/minecraft_2023_linux.svg"
     width="30" />
 </picture>
+
+### Missing Icon
+
+The launcher itself displays the correct icon when it starts. However, when a game version is launched, no image is loaded. The problem is that each version of the game has its own name. The name of the .desktop file (without .desktop) must match this name (app_id) exactly.
+For each version, a new file must be created and stored in the `$HOME/.local/share/applications` folder. An example can be found in the "Resources" folder named "Minecraft 1.21.8.desktop".
 
 ## Uninstall
 

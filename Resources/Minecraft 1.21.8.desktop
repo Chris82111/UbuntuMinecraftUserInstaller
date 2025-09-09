@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Minecraft
+NoDisplay=true
+Comment=Opens Minecraft
+Exec=minecraft-launcher
+Icon=minecraft_icon
+Terminal=false
+Type=Application
+Categories=Game;
+SingleMainWindow=true
+X-GNOME-SingleWindow=true
