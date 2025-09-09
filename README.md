@@ -18,7 +18,16 @@ execution and is also not permitted. Without parameters, the script is
 executed in interactive mode. Parameters can be entered for automation,
 eliminating the need for inputs during installation.
 
-## Parameter
+## Actions
+
+In the "Show Apps" menu, you can right-click to perform the following actions:
+
+- $\textsf{\color{lightblue}Open Save Folder}$ The action opens the default folder for your game saves.
+- $\textsf{\color{lightblue}Uninstall}$ The action starts the uninstallation process.
+
+## Install Script
+
+The install script can be used for installation and uninstallation:
 
 ```bash
 install.sh [-v|--verbose] [--install | --uninstall] [--archive <path>] [--image <index>] [-h|--help] [--version]
@@ -94,3 +103,14 @@ The desktop icon can be one of the following icons:
     src="./Resources/Icons/minecraft_2023_linux.svg"
     width="30" />
 </picture>
+
+## Uninstall
+
+Uninstallation can be performed via the uninstall action
+(see: [Action](#Actions)), using the install script
+(see: [Install Script](#Install-Script)), or using the created
+uninstall script:
+
+```bash
+$HOME/.local/share/minecraft/uninstall.sh
+```
